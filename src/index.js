@@ -1,9 +1,12 @@
-import mongoose from "mongoose";
-import {DB_NAME } from "./constants.js";
-import connectDB from "./db";
+// require("dotenv").config({path:"./env"})//gets above all bcs need it above all also it breakss the code constency
+import dotenv from "dotenv";
+import connectDB from "./db/db.js";
 
-
-
+dotenv.config({
+    path:"./.env"
+}); //not even in docs but inrtroduecxd new way to load env variables can be used as experimentakl feature
+//go in package.json file and -r and stuff tyo use as epermntal puit in dev scroipt
+connectDB()
 
 
 
