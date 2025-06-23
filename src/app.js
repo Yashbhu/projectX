@@ -1,17 +1,26 @@
 import express from 'express';
-import cors from "cors";
-import cookieParser from "cookie-parser";
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
-app.use(cors()){
-    origin: process.env.CORS_ORIGIN,
-    Credentials: true
-}
+// ✅ Enable CORS for frontend origin
+app.use(cors({
+  origin: process.env.CORS_ORIGIN,  // e.g., http://localhost:3000
+  credentials: true
+}));
 
-app.use(express.json({limit: "10mb"}));//kitne bhi kb elo agr url sd data aye to conifg bhi krna niche
-app.use(express.urlencoded({extended:true,limit:"16kb"}))//extended for nested objects
-app.use(express.static(public))//public asset ke lie kuch agr store krna ho
-app.use(cookieParser())//cookie parser for cookies
- 
-export {app}
+// ✅ Parse incoming JSON (limit to 10MB)
+app.use(express.json({ limit: "10mb" }));
+
+// ✅ Parse URL-encoded data (extended true = allow nested objects)
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+
+// ✅ Serve static files (e.g., images, assets) from /public
+app.use(express.static('public'));
+
+// ✅ Parse cookies from requests (required for auth sessions/tokens)
+app.use(cookieParser());
+
+// ✅ Export app for use in index.js
+export { app };
