@@ -1,26 +1,14 @@
 //method banaega aur export krdega jisse bar abr na krna pdega kind of wrapper jisko bar abr use kr ske
 
-const asyncHandler =(requesthandler) =>{
-    (req,res,next) =>{ //eiher its rjeect or catch jo bhi man kre resolve me bas reqhandler ko call krna hai
-        promise.resolve(requesthandler(req,res,next))
-        .catch((err) => next(err))   
-    }
-}
+
+// src/utils/asyncHandler.js
+const asyncHandler = (requestHandler) => {
+  return (req, res, next) => {
+    Promise.resolve(requestHandler(req, res, next)).catch(next);
+  };
+};
 
 export default asyncHandler;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
