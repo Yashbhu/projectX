@@ -27,7 +27,7 @@ app.use(cookieParser());
 import userRouter from './routes/user.routes.js';
 
 //routes declaration ab app.get nhi likh skte ab middleware chhaiye jiss jo router utha kr laye ho usse connect kr paye
-app.use('/api/v1/users',userRouter)//jese hi user pr click vese hi userourter ka access
+app.use('/api/v1/user',userRouter)//jese hi user pr click vese hi userourter ka access
 //ab jayega user router file me
 //agr login banana hoga to ye vapas jayega router me login ke lie and u dont need to have 
 //diff route login and register
